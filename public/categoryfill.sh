@@ -2,6 +2,6 @@
 i=0
 while [[ $i -lt 1000 ]];
 do
-php index.php $i
+php fillCategory.php $i
 ((i++))
 done

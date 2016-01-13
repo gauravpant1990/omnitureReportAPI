@@ -54,6 +54,8 @@ class ReportController
                         $this->saveToSubCategory($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
                     }elseif($table == "brand"){
                         $this->saveToBrand($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
+                    }elseif($table == "item_id"){
+                        $this->saveToItemId($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
                     }
                     /*foreach ($data->breakdown as $subcategory) {
                         if (strpos($subcategory->name, "other") === false && strpos($subcategory->name, "Unspecified") === false) {
@@ -118,6 +120,29 @@ class ReportController
                     "three_days_sub_category_ae",
                     array("id" => md5($id_keyword . $id_sub_category),
                         "id_sub_category" => $id_sub_category,
+                        "id_keyword" => $id_keyword,
+                        "orders" => $metrices[$orderIndex],
+                        "visits" => $metrices[$visitIndex],
+                        "product_views" => $metrices[$productViewIndex],
+                        "carts" => $metrices[$cartIndex]
+                    )
+                );
+            }
+        }
+    }
+
+    function saveToItemId($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex){
+        $dbObject = new DbObject();
+        foreach ($data->breakdown as $subcategory) {
+            if (stripos($subcategory->name, "other") === false && stripos($subcategory->name, "Unspecified") === false && stripos($subcategory->name, "Others") === false) {
+                $id_sub_category = md5($subcategory->name);
+                $dbObject->insert("item_id", array("id" => $subcategory->name));
+                //foreach($subcategory->counts as $metric){
+                $metrices = $subcategory->counts;
+                $dbObject->insert(
+                    "three_days_item_id_ae",
+                    array("id" => md5($id_keyword . $id_sub_category),
+                        "id_item_id" => $subcategory->name,
                         "id_keyword" => $id_keyword,
                         "orders" => $metrices[$orderIndex],
                         "visits" => $metrices[$visitIndex],
