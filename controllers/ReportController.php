@@ -9,8 +9,13 @@
 class ReportController
 {
     public $omnitureReport;
-    function __construct(){
+    public $availableDays=array();
+    public $isValidReport=true;
+
+    function __construct($days){
         $this->omnitureReport = new OmnitureReport();
+        $this->availableDays=array(3=>"three",7=>"seven");
+        if(!isset($this->availableDays[$days])) $this->isValidReport=false;
     }
     function runOmnitureReport($params, $type){
         return $this->omnitureReport->generateReport($params, $type);
@@ -24,7 +29,7 @@ class ReportController
         return $this->omnitureReport->runReport($queue);
     }
 
-    function saveToDb($report, $table){
+    function saveToDb($report, $table, $days){
         try {
             $dbObject = new DbObject();
             $dataArray = $report->data;
@@ -39,23 +44,26 @@ class ReportController
                 if (strpos($data->name, "unspecified") == false) {
                     $id_keyword = $data->name;//md5()
                     $metricesKeyword = $data->counts;
+                    $keyword=array(
+                        "id" => $id_keyword,
+                        "value" => $data->name,
+                        "orders" =>$metricesKeyword[$orderIndex],
+                        "visits" => $metricesKeyword[$visitIndex],
+                        "product_views" => $metricesKeyword[$productViewIndex],
+                        "carts" => $metricesKeyword[$cartIndex]
+                    );
                     $dbObject->insert(
                         "keyword",
-                        array(
-                            "id" => $id_keyword,
-                            "value" => $data->name,
-                            "orders" =>$metricesKeyword[$orderIndex],
-                            "visits" => $metricesKeyword[$visitIndex],
-                            "product_views" => $metricesKeyword[$productViewIndex],
-                            "carts" => $metricesKeyword[$cartIndex]
-                        )
+                        $keyword
                     );
                     if($table == "sub_category"){
                         $this->saveToSubCategory($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
                     }elseif($table == "brand"){
-                        $this->saveToBrand($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
+                        $this->saveToBrand($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex, $this->availableDays[$days]);
                     }elseif($table == "item_id"){
-                        $this->saveToItemId($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
+                        $this->saveToItemId($data,
+                            $orderIndex, $visitIndex, $productViewIndex,
+                            $cartIndex, $this->availableDays[$days],$keyword);
                     }
                     /*foreach ($data->breakdown as $subcategory) {
                         if (strpos($subcategory->name, "other") === false && strpos($subcategory->name, "Unspecified") === false) {
@@ -85,7 +93,7 @@ class ReportController
         }
     }
 
-    function saveToBrand($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex){
+    function saveToBrand($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex, $days){
         $dbObject = new DbObject();
         foreach ($data->breakdown as $brand) {
             if (stripos($brand->name, "other") === false && stripos($brand->name, "Unspecified") === false && stripos($brand->name, "Others") === false) {
@@ -94,7 +102,7 @@ class ReportController
                 //foreach($subcategory->counts as $metric){
                 $metrices = $brand->counts;
                 $dbObject->insert(
-                    "three_days_brand_ae",
+                    $days."_days_brand_ae",
                     array("id" => md5($id_keyword . $id_brand),
                         "id_brand" => $id_brand,
                         "id_keyword" => $id_keyword,
@@ -131,24 +139,29 @@ class ReportController
         }
     }
 
-    function saveToItemId($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex){
+    function saveToItemId($data, $orderIndex, $visitIndex, $productViewIndex, $cartIndex, $days, $keyword){
         $dbObject = new DbObject();
-        foreach ($data->breakdown as $subcategory) {
-            if (stripos($subcategory->name, "other") === false && stripos($subcategory->name, "Unspecified") === false && stripos($subcategory->name, "Others") === false) {
-                $id_sub_category = md5($subcategory->name);
-                $dbObject->insert("item_id", array("id" => $subcategory->name));
-                //foreach($subcategory->counts as $metric){
-                $metrices = $subcategory->counts;
+        foreach ($data->breakdown as $itemId) {
+            if (stripos($itemId->name, "other") === false && stripos($itemId->name, "Unspecified") === false && stripos($itemId->name, "Others") === false) {
+                $id_item_id = md5($itemId->name);
+                $dbObject->insert("item_id", array("id" => $itemId->name));
+                //foreach($itemId->counts as $metric){
+                $metrices = $itemId->counts;
+                $itemIdKeyword = array("id" => md5($keyword['id'] . $id_item_id),
+                    "id_item_id" => $itemId->name,
+                    "id_keyword" => $keyword['id'],
+                    "orders" => $metrices[$orderIndex],
+                    "visits" => $metrices[$visitIndex],
+                    "product_views" => $metrices[$productViewIndex],
+                    "carts" => $metrices[$cartIndex],
+
+                );
+                $score = Formula::getScore($keyword,$itemIdKeyword);
+                if($score===false)continue;
+                $dataarray = array_merge($itemIdKeyword,array('score'=>$score));
                 $dbObject->insert(
-                    "three_days_item_id_ae",
-                    array("id" => md5($id_keyword . $id_sub_category),
-                        "id_item_id" => $subcategory->name,
-                        "id_keyword" => $id_keyword,
-                        "orders" => $metrices[$orderIndex],
-                        "visits" => $metrices[$visitIndex],
-                        "product_views" => $metrices[$productViewIndex],
-                        "carts" => $metrices[$cartIndex]
-                    )
+                    $days."_days_item_id_ae",
+                    $dataarray
                 );
             }
         }

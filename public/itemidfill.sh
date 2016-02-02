@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 i=0
-while [[ $i -lt 10 ]];
+while [[ $i -lt 2 ]];
 do
-php fillItemId.php $i
+php fillItemId.php $i $1
 ((i++))
 done
