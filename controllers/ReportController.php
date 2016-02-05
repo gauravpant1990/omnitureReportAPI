@@ -12,10 +12,14 @@ class ReportController
     public $availableDays=array();
     public $isValidReport=true;
 
-    function __construct($days){
+    function __construct($numdays){
         $this->omnitureReport = new OmnitureReport();
-        $this->availableDays=array(3=>"three",7=>"seven");
-        if(!isset($this->availableDays[$days])) $this->isValidReport=false;
+        $dbObject = new DbObject();
+        $days=$dbObject->select('available_days');
+        foreach($days as $day){
+            $this->availableDays[(int)$day['id']]=$day['days_in_words'];
+        }
+        if(!isset($this->availableDays[$numdays])) $this->isValidReport=false;
     }
     function runOmnitureReport($params, $type){
         return $this->omnitureReport->generateReport($params, $type);

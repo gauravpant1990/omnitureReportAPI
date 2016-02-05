@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb12209d-65d9-4998-b674-90eff5004f82" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\intent-detector\public\scoreCategory.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/ReportController.php" afterPath="$PROJECT_DIR$/controllers/ReportController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="api-junction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,8 +34,8 @@
       <file leaf-file-name="ReportController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/ReportController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.846153">
-              <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+            <state vertical-scroll-proportion="-17.653847">
+              <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -53,7 +54,7 @@
       <file leaf-file-name="DbObject.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/DbObject.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1320755">
+            <state vertical-scroll-proportion="4.1132073">
               <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
                 <marker date="1454670901804" expanded="true" signature="846:875" placeholder="delete from ..." />
@@ -67,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/public/itemidfill.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -83,10 +84,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="score.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="score.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/score.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38345864">
+            <state vertical-scroll-proportion="-7.8461537">
               <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding>
                 <marker date="1454671120251" expanded="true" signature="217:393" placeholder="..." />
@@ -98,7 +99,7 @@
       <file leaf-file-name="ScoreController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/ScoreController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.384615">
+            <state vertical-scroll-proportion="-12.730769">
               <caret line="21" column="66" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="66" />
               <folding>
                 <marker date="1454659954900" expanded="true" signature="377:456" placeholder="select days_..available_days..." />
@@ -127,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fillItemId.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="fillItemId.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/fillItemId.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1923077">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.67105263">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
               </folding>
@@ -184,11 +185,11 @@
         <option value="$PROJECT_DIR$/models/FormulaCalculator.php" />
         <option value="$PROJECT_DIR$/models/Formula.php" />
         <option value="$PROJECT_DIR$/public/itemidfill.sh" />
-        <option value="$PROJECT_DIR$/public/fillItemId.php" />
         <option value="$PROJECT_DIR$/controllers/ScoreController.php" />
         <option value="$PROJECT_DIR$/models/DbObject.php" />
-        <option value="$PROJECT_DIR$/controllers/ReportController.php" />
         <option value="$PROJECT_DIR$/public/score.php" />
+        <option value="$PROJECT_DIR$/controllers/ReportController.php" />
+        <option value="$PROJECT_DIR$/public/fillItemId.php" />
       </list>
     </option>
   </component>
@@ -780,27 +781,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/itemidfill.sh">
+    <entry file="file://$PROJECT_DIR$/models/DbObject.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding />
+        <state vertical-scroll-proportion="4.1132073">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <marker date="1454670901804" expanded="true" signature="846:875" placeholder="delete from ..." />
+            <marker date="1454670901804" expanded="true" signature="1325:1387" placeholder="insert into ..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/fillItemId.php">
+    <entry file="file://$PROJECT_DIR$/public/score.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1923077">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="30" />
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
+            <marker date="1454671120251" expanded="true" signature="217:393" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ScoreController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.384615">
+        <state vertical-scroll-proportion="-12.730769">
           <caret line="21" column="66" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="66" />
           <folding>
             <marker date="1454659954900" expanded="true" signature="377:456" placeholder="select days_..available_days..." />
@@ -819,31 +823,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/DbObject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1320755">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <marker date="1454670901804" expanded="true" signature="846:875" placeholder="delete from ..." />
-            <marker date="1454670901804" expanded="true" signature="1325:1387" placeholder="insert into ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ReportController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.846153">
-          <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+        <state vertical-scroll-proportion="-17.653847">
+          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/score.php">
+    <entry file="file://$PROJECT_DIR$/public/itemidfill.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38345864">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/fillItemId.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67105263">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
-            <marker date="1454671120251" expanded="true" signature="217:393" placeholder="..." />
+            <element signature="e#6#90#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
