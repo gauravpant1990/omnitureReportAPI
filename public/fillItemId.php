@@ -42,7 +42,7 @@ $params = array('reportDescription' => array(
         array(
             'id' => 'product',
             'classification' => 'product id_item',
-            'top' => '10'
+            'top' => '50'
         )
     ), // elements, elements don't apply to Overtime reports
     'sortBy' => 'event1', // sortBy

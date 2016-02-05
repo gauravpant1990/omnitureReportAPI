@@ -12,6 +12,7 @@ class DbObject extends Db
 		}
 		$query = "select ".$attributes." from ".$table." where ".$whereString;
 		if(!is_null($groupby)) $query = $query." group by ".$groupby;
+		$query=$query.";";
 		return $this->query($query);
 	}
 	public function update($table, $arrayAttributes, $where = 1)
@@ -23,7 +24,7 @@ class DbObject extends Db
 		}
 		$keyvalue = rtrim($keyvalue, ",");
 		$query = "update ".$table." set ".$keyvalue." where ".$where;
-		echo "<br>".$query."<br>";
+		$query=$query.";";
 		return $this->query($query);
 	}
 	public function delete($table, $where =1)

@@ -52,10 +52,20 @@ class ReportController
                         "product_views" => $metricesKeyword[$productViewIndex],
                         "carts" => $metricesKeyword[$cartIndex]
                     );
-                    $dbObject->insert(
-                        "keyword",
-                        $keyword
-                    );
+
+                    if(count($dbObject->select('keyword',array('*'),'id="'.$id_keyword.'"'))==0){
+                        $dbObject->insert(
+                            "keyword",
+                            $keyword
+                        );
+                    }else{
+                        $dbObject->update(
+                            "keyword",
+                            $keyword,
+                            "id='".$id_keyword."'"
+                        );
+                    }
+
                     if($table == "sub_category"){
                         $this->saveToSubCategory($data, $id_keyword, $orderIndex, $visitIndex, $productViewIndex, $cartIndex);
                     }elseif($table == "brand"){

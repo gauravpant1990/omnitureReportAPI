@@ -22,10 +22,13 @@ class Formula
         if ($keyword['carts'] != 0)
             $cartsScore = $itemIdKeyword['carts'] / $keyword['carts'];
 
-        if($visitScore<0.1)return false;
+        if($visitScore<0.01)return false;
         if($itemIdKeyword['visits']<5){
             if($itemIdKeyword['orders']==0)return false;
         }
         return $orderScore + $visitScore + $productViewsScore + $cartsScore;
+    }
+    static function getCombinedScore(){
+
     }
 }
